@@ -13,7 +13,7 @@ def main():
     print("🚀 Starting Sales Analytics...")
     
     # Initialize components
-    data_processor = DataProcessor("d:/New folder (15)/sales_data.csv")
+    data_processor = DataProcessor("sales_data.csv")
     model_manager = ModelManager()
     analytics_engine = AnalyticsEngine()
     
