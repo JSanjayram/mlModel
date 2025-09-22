@@ -231,10 +231,4 @@ For support, email your-email@example.com or create an issue in the GitHub repos
 
 ---
 
-<<<<<<< HEAD
 **Built with ❤️ using Streamlit and Python**
-=======
-**Built with ❤️ using Streamlit and Python**#   m l M o d e l 
- 
- 
->>>>>>> f70cff5591f3805211462ab00e154acba73ae1b7
