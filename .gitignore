@@ -40,7 +40,6 @@ Thumbs.db
 .streamlit/
 
 # Data files (optional - remove if you want to include CSV)
-*.csv
 *.xlsx
 *.xls
 

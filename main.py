@@ -329,13 +329,6 @@ class SalesAnalyticsDashboard:
         """Load and process the sales data"""
         if 'processed_data' not in st.session_state:
             with st.spinner("Loading and processing data..."):
-                # Debug info
-                import os
-                st.write(f"Debug: Looking for CSV at: {self.data_processor.filepath}")
-                st.write(f"Debug: File exists: {os.path.exists(self.data_processor.filepath)}")
-                st.write(f"Debug: Current directory: {os.getcwd()}")
-                st.write(f"Debug: Directory contents: {os.listdir('.')}")
-                
                 # Load data
                 if self.data_processor.load_data():
                     # Process data
