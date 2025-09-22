@@ -517,7 +517,7 @@ class SalesAnalyticsDashboard:
         st.markdown("""
         <div class="main-header">
             <h1 class="header-title">Sales Analytics Dashboard</h1>
-            <p class="header-subtitle">Advanced Business Intelligence & Machine Learning Platform</p>
+            <p class="header-subtitle">Advanced Business Intelligence & Machine Learning Platform Developed By Sanjay Ram J </p>
         </div>
         """, unsafe_allow_html=True)
         
