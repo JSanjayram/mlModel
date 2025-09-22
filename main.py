@@ -26,6 +26,30 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# Check if user is on mobile and restrict access
+try:
+    user_agent = st.context.headers.get('user-agent', '').lower()
+except:
+    user_agent = ''
+
+mobile_keywords = ['mobile', 'android', 'iphone', 'ipad', 'tablet']
+is_mobile = any(keyword in user_agent for keyword in mobile_keywords)
+
+if is_mobile:
+    st.error("🖥️ Desktop Only Access")
+    st.markdown("""
+    ### This application is optimized for desktop use only.
+    
+    Please open this dashboard on a desktop or laptop computer for the best experience.
+    
+    **Why desktop only?**
+    - Complex data visualizations
+    - Advanced analytics features
+    - Better screen real estate
+    - Optimal user experience
+    """)
+    st.stop()
+
 # Custom CSS for enhanced design
 st.markdown("""
 <style>
