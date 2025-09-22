@@ -305,8 +305,22 @@ st.markdown("""
 
 class SalesAnalyticsDashboard:
     def __init__(self):
-        # Use relative path for deployment compatibility
-        self.data_processor = DataProcessor("sales_data.csv")
+        # Use robust path detection for deployment
+        import os
+        csv_path = "sales_data.csv"
+        if not os.path.exists(csv_path):
+            # Try alternative paths
+            possible_paths = [
+                "./sales_data.csv",
+                "../sales_data.csv", 
+                "/mount/src/mlmodel/sales_data.csv",
+                os.path.join(os.path.dirname(__file__), "sales_data.csv")
+            ]
+            for path in possible_paths:
+                if os.path.exists(path):
+                    csv_path = path
+                    break
+        self.data_processor = DataProcessor(csv_path)
         self.model_manager = ModelManager()
         self.dashboard_components = DashboardComponents()
         self.analytics_engine = AnalyticsEngine()
@@ -315,6 +329,13 @@ class SalesAnalyticsDashboard:
         """Load and process the sales data"""
         if 'processed_data' not in st.session_state:
             with st.spinner("Loading and processing data..."):
+                # Debug info
+                import os
+                st.write(f"Debug: Looking for CSV at: {self.data_processor.filepath}")
+                st.write(f"Debug: File exists: {os.path.exists(self.data_processor.filepath)}")
+                st.write(f"Debug: Current directory: {os.getcwd()}")
+                st.write(f"Debug: Directory contents: {os.listdir('.')}")
+                
                 # Load data
                 if self.data_processor.load_data():
                     # Process data
