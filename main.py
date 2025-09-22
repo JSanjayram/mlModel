@@ -300,6 +300,18 @@ st.markdown("""
         text-overflow: ellipsis;
         max-width: 100%;
     }
+    
+    /* Chart container fixes */
+    .stPlotlyChart {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+    }
+    
+    .js-plotly-plot {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -616,7 +628,9 @@ class SalesAnalyticsDashboard:
         fig.update_layout(
             plot_bgcolor='rgba(0,0,0,0)',
             paper_bgcolor='rgba(0,0,0,0)',
-            font_color='white'
+            font_color='white',
+            height=400,
+            margin=dict(l=20, r=20, t=40, b=20)
         )
         fig.update_traces(line_color='#00E676')
         st.plotly_chart(fig, use_container_width=True)
@@ -638,7 +652,9 @@ class SalesAnalyticsDashboard:
         fig.update_layout(
             plot_bgcolor='rgba(0,0,0,0)',
             paper_bgcolor='rgba(0,0,0,0)',
-            font_color='white'
+            font_color='white',
+            height=400,
+            margin=dict(l=20, r=20, t=40, b=20)
         )
         fig.update_traces(marker_color='#FF6B35')
         st.plotly_chart(fig, use_container_width=True)
@@ -658,7 +674,9 @@ class SalesAnalyticsDashboard:
         fig.update_layout(
             plot_bgcolor='rgba(0,0,0,0)',
             paper_bgcolor='rgba(0,0,0,0)',
-            font_color='white'
+            font_color='white',
+            height=400,
+            margin=dict(l=20, r=20, t=40, b=20)
         )
         fig.update_traces(marker=dict(colors=['#9C27B0', "#E6E91E", '#F44336', '#FF9800', '#4CAF50']))
         st.plotly_chart(fig, use_container_width=True)
@@ -681,7 +699,9 @@ class SalesAnalyticsDashboard:
             paper_bgcolor='rgba(0,0,0,0)',
             font_color='white',
             xaxis_title='Customer Segment',
-            yaxis_title='Sales ($)'
+            yaxis_title='Sales ($)',
+            height=400,
+            margin=dict(l=20, r=20, t=40, b=20)
         )
         fig.update_traces(marker_color='#00BCD4')
         st.plotly_chart(fig, use_container_width=True)
@@ -737,7 +757,7 @@ class SalesAnalyticsDashboard:
                 title="Sales by Order Status",
                 template="plotly_dark"
             )
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width='stretch')
     
     def render_customer_insights(self, df):
         """Render customer insights"""
@@ -759,7 +779,7 @@ class SalesAnalyticsDashboard:
             yaxis_title='Customer Name'
         )
         fig.update_traces(marker_color='#8BC34A')
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width='stretch')
         
         # Customer distribution by country
         country_customers = df.groupby('COUNTRY')['CUSTOMERNAME'].nunique().sort_values(ascending=False)
@@ -778,7 +798,7 @@ class SalesAnalyticsDashboard:
             yaxis_title='Customer Count'
         )
         fig.update_traces(marker_color='#FF5722')
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width='stretch')
     
     def render_product_insights(self, df):
         """Render product insights"""
@@ -802,7 +822,7 @@ class SalesAnalyticsDashboard:
                 yaxis_title='Product Code'
             )
             fig.update_traces(marker_color='#673AB7')
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width='stretch')
         
         with col2:
             # Product quantity vs sales
@@ -818,7 +838,7 @@ class SalesAnalyticsDashboard:
                 title="Product Quantity vs Sales",
                 template="plotly_dark"
             )
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width='stretch')
     
     def render_trend_analysis(self, df):
         """Render trend analysis"""
@@ -839,7 +859,7 @@ class SalesAnalyticsDashboard:
             yaxis_title='Sales ($)'
         )
         fig.update_traces(line_color='#E91E63')
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width='stretch')
         
         # Year-over-year comparison
         yearly_sales = df.groupby('YEAR_ID')['SALES'].sum()
@@ -858,7 +878,7 @@ class SalesAnalyticsDashboard:
             yaxis_title='Sales ($)'
         )
         fig.update_traces(marker_color='#009688')
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width='stretch')
     
     def render_ml_section(self, model_action):
         """Render ML model section"""
@@ -890,7 +910,7 @@ class SalesAnalyticsDashboard:
                 performance_df = None
             
             if performance_df is not None and not performance_df.empty:
-                st.dataframe(performance_df, use_container_width=True)
+                st.dataframe(performance_df, width='stretch')
                 
                 perf_chart_df = performance_df.reset_index()
                 
@@ -903,7 +923,7 @@ class SalesAnalyticsDashboard:
                 )
                 fig.update_xaxes(title="Model")
                 fig.update_yaxes(title="R² Score")
-                st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(fig, width='stretch')
             else:
                 st.info("No model performance data available.")
         except Exception as e:
@@ -968,7 +988,7 @@ class SalesAnalyticsDashboard:
                 st.write(f"• Optimize {growth_product} pricing")
         
         # Product performance table
-        st.dataframe(product_metrics, use_container_width=True)
+        st.dataframe(product_metrics, width='stretch')
     
     def render_geographic_strategy(self, df):
         """Geographic expansion insights"""
@@ -1001,7 +1021,7 @@ class SalesAnalyticsDashboard:
             title="Profit by Territory",
             template="plotly_dark"
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width='stretch')
     
     def render_whatif_analysis(self, df):
         """What-if scenario analysis"""
@@ -1069,7 +1089,7 @@ class SalesAnalyticsDashboard:
                 title="Feature Importance (Best Model)",
                 template="plotly_dark"
             )
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width='stretch')
         else:
             st.warning("Feature importance not available for the current model")
     
