@@ -536,14 +536,16 @@ class SalesAnalyticsDashboard:
         self.render_kpi_section(df)
         
         # Charts Section
-        col1, col2 = st.columns(2)
+        col1, col2 = st.columns([1, 1], gap="medium")
         
         with col1:
             self.render_sales_trend_chart(df)
+            st.markdown("<div style='margin-bottom: 2rem;'></div>", unsafe_allow_html=True)
             self.render_product_performance_chart(df)
         
         with col2:
             self.render_territory_analysis_chart(df)
+            st.markdown("<div style='margin-bottom: 2rem;'></div>", unsafe_allow_html=True)
             self.render_customer_analysis_chart(df)
         
         # Detailed Analytics
