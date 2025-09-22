@@ -710,13 +710,14 @@ class SalesAnalyticsDashboard:
         
         with col1:
             # Sales by deal size
-            deal_size_sales = df.groupby('DEALSIZE')['SALES'].sum()
+            deal_size_sales = df.groupby('DEALSIZE')['SALES'].sum().reset_index()
             fig = px.bar(
-                x=deal_size_sales.index,
-                y=deal_size_sales.values,
+                deal_size_sales,
+                x='DEALSIZE',
+                y='SALES',
                 title="Sales by Deal Size",
                 template="plotly_dark",
-                labels={'x': 'Deal Size', 'y': 'Sales ($)'}
+                labels={'DEALSIZE': 'Deal Size', 'SALES': 'Sales ($)'}
             )
             fig.update_layout(
                 plot_bgcolor='rgba(0,0,0,0)',
@@ -725,7 +726,7 @@ class SalesAnalyticsDashboard:
                 yaxis_title='Sales ($)'
             )
             fig.update_traces(marker_color='#FFC107')
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width='stretch')
         
         with col2:
             # Sales by status
