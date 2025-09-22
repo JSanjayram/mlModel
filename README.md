@@ -74,7 +74,7 @@ We implement three different machine learning algorithms to ensure robust predic
 3. **Validation**: Cross-validation to ensure generalization
 4. **Selection**: Best performing model used for predictions
 
-## 📊 Analysis for Visitors & Clients
+## 📈 Analysis for Visitors & Clients
 
 ### For Business Visitors
 - **Executive Dashboard**: High-level KPIs and trends at a glance
@@ -231,5 +231,4 @@ For support, email your-email@example.com or create an issue in the GitHub repos
 
 ---
 
-**Built with ❤️ using Streamlit and Python**#   m l M o d e l  
- 
+**Built with ❤️ using Streamlit and Python**
