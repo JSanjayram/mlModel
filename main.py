@@ -305,8 +305,8 @@ st.markdown("""
 
 class SalesAnalyticsDashboard:
     def __init__(self):
-        # Use the correct path for the CSV file
-        self.data_processor = DataProcessor("d:/New folder (15)/sales_data.csv")
+        # Use relative path for deployment compatibility
+        self.data_processor = DataProcessor("sales_data.csv")
         self.model_manager = ModelManager()
         self.dashboard_components = DashboardComponents()
         self.analytics_engine = AnalyticsEngine()
