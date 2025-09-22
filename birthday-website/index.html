@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Quest for the Legendary Birthday Cake</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Landing Screen -->
+    <div id="landing" class="screen active">
+        <div class="epic-intro">
+            <h1 class="title">🌌 In a world full of candles, balloons, and slightly out-of-tune birthday songs…</h1>
+            <h2 class="subtitle">A hero has arrived.</h2>
+            <h3 class="question">Is it you?</h3>
+            <button class="quest-btn" onclick="startQuest()">Start the Quest 🎂</button>
+        </div>
+    </div>
+
+    <!-- Name Entry Screen -->
+    <div id="nameEntry" class="screen">
+        <div class="content">
+            <h1>What shall we call our brave birthday hero?</h1>
+            <input type="text" id="heroName" placeholder="Enter your name" maxlength="20">
+            <button class="quest-btn" onclick="beginJourney()">Begin My Journey</button>
+        </div>
+    </div>
+
+    <!-- Path Choice Screen -->
+    <div id="pathChoice" class="screen">
+        <div class="content">
+            <h1>⚔️ Choose your path, warrior <span id="playerName"></span>:</h1>
+            <div class="choices">
+                <button class="choice-btn" onclick="choosePath('balloon')">
+                    🦕 Sneak past the balloon-animal army
+                </button>
+                <button class="choice-btn" onclick="choosePath('dance')">
+                    💃 Dance-battle Aunt Karen to get the cake
+                </button>
+                <button class="choice-btn" onclick="choosePath('bribe')">
+                    🍬 Bribe the grumpy piñata with candy
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Path Result Screen -->
+    <div id="pathResult" class="screen">
+        <div class="content">
+            <h1 id="resultTitle"></h1>
+            <p id="resultText"></p>
+            <button class="quest-btn" onclick="showBoss()">Continue to the Cake 🎂</button>
+        </div>
+    </div>
+
+    <!-- Boss Level Screen -->
+    <div id="bossLevel" class="screen">
+        <div class="content">
+            <h1>🎂 You approach the Sacred Cake...</h1>
+            <h2>But it's guarded by... A sugar-rushed toddler!! 😱</h2>
+            <p>What do you do?</p>
+            <div class="choices">
+                <button class="choice-btn" onclick="defeatBoss('juice')">
+                    🧃 Offer a juice box as tribute
+                </button>
+                <button class="choice-btn" onclick="defeatBoss('bubbles')">
+                    🫧 Distract them with bubbles
+                </button>
+                <button class="choice-btn" onclick="defeatBoss('reason')">
+                    🧠 Try to reason with them (bold move)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Victory Screen -->
+    <div id="victory" class="screen">
+        <div class="content">
+            <h1 class="victory-title">🎉 YOU DID IT! 🎉</h1>
+            <div class="rewards">
+                <h2>You have earned:</h2>
+                <ul>
+                    <li>✅ One (1) slice of the Legendary Cake</li>
+                    <li>✅ Eternal party street cred</li>
+                    <li>✅ A very suspicious party hat 🎩</li>
+                </ul>
+            </div>
+            <h2 class="birthday-msg">Happy Birthday, <span id="finalName"></span>!</h2>
+            <button class="quest-btn" onclick="takeSelfie()">Take a Selfie with the Cake 📸</button>
+            <button class="restart-btn" onclick="restartQuest()">Play Again</button>
+        </div>
+    </div>
+
+    <!-- Selfie Screen -->
+    <div id="selfie" class="screen">
+        <div class="content">
+            <h1>📸 Epic Victory Selfie!</h1>
+            <div class="selfie-frame">
+                <div class="cake-emoji">🎂</div>
+                <div class="hero-name" id="selfieHero"></div>
+                <div class="victory-text">CAKE QUEST CHAMPION!</div>
+            </div>
+            <button class="quest-btn" onclick="restartQuest()">Start New Quest</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
