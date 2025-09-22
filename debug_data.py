@@ -8,7 +8,7 @@ import os
 from data_processor import DataProcessor
 
 def debug_data_loading():
-    filepath = "d:/New folder (15)/sales_data.csv"
+    filepath = "sales_data.csv"
     
     print("=== Data Loading Debug ===")
     print(f"File path: {filepath}")
