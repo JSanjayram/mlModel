@@ -271,4 +271,5 @@ For support and questions:
 
 ---
 
-**Built with ❤️ for data-driven business intelligence**
+**Built with ❤️ for data-driven business intelligence**#   C u s t o m e r S e g e m e n t a t i o n p r e d i t c t i o n  
+ 
